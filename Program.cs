@@ -1,4 +1,6 @@
-﻿namespace PPCumpAssign
+﻿using primeGenerator;
+
+namespace PPCumpAssign
 {
     class Program
     {
@@ -10,7 +12,9 @@
 
         static void RunOrder()
         {
-
+            PrimeGenerator.GetPrimesSequential(1000000,1000100);
+            PrimeGenerator.GetPrimesParallel(100,500);
         }
+
     }
 }
