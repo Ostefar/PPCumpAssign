@@ -4,13 +4,15 @@ namespace PPCumpAssign
 {
     class Program
     {
-        static void Main(string[] args)
+        // INFO: at this moment, the printing of the primes is commented out in PrimeGenerator.class, in each of the functions.
+        // This is done on purpose, to easier see the test results instead of millions of numbers. Remove the commentation, if you want too see the primes
 
+        static void Main(string[] args)
         {
             bool isRunning = true;
+            Console.WriteLine("Welcome to the prime generator");
             do
             {
-                Console.WriteLine("Welcome to the prime generator - x to escape");
                 Console.WriteLine("Enter range start");
                 var first = Console.ReadLine();
                 Console.WriteLine("Enter range end");

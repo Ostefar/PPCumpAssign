@@ -10,8 +10,7 @@ namespace primeGenerator
 {
     public class PrimeGenerator
     {
-        static readonly object theLock = new object();
-        static long index = -1;
+
         public static List<long> GetPrimesSequential(long first, long last)
         {
             var sw = Stopwatch.StartNew();
@@ -44,6 +43,7 @@ namespace primeGenerator
             }*/
             sw.Stop();
             Console.WriteLine("");
+            Console.WriteLine("Number of primes added to the list " + primes.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
             return primes;
@@ -58,21 +58,23 @@ namespace primeGenerator
             Console.WriteLine("Sequential LINQ");
             //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
 
-            List<int> primes = (from n in range
+            List<int> primes2 = (from n in range
                          let w = (int)Math.Sqrt(n)
                          where Enumerable.Range(2, w).All((i) => n % i > 0)
                          select n).ToList();
 
             // remove commentation for printing primes
-            /*foreach (int prime in primes)
+            /*foreach (int prime in primes2)
             {
                 Console.Write(prime + " ");
             }*/
+
             sw.Stop();
             Console.WriteLine("");
+            Console.WriteLine("Number of primes added to the list " + primes2.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
-            return primes.ToList();
+            return primes2.ToList();
 
         }
         public static List<int> GetPrimesParallelLINQ(int first, int last) 
@@ -82,25 +84,27 @@ namespace primeGenerator
             Console.WriteLine("Parallel LINQ");
             //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
 
-            IEnumerable<int> range = Enumerable.Range(first, last);
+            IEnumerable<int> range = Enumerable.Range(first, last - first);
 
-            List<int> primes = (from n in range.AsParallel()
+            List<int> primes3 = (from n in range.AsParallel()
                           let w = (int)Math.Sqrt(n)
                           where Enumerable.Range(2, w).All((i) => n % i > 0)
                           select n).ToList();
 
-            primes.Sort();
+            primes3.Sort();
 
             // remove commentation for printing primes
-            /* foreach (int prime in primes)
+            /*foreach (int prime in primes3)
              {
                  Console.Write(prime + " ");
              }*/
+
             sw.Stop();
             Console.WriteLine("");
+            Console.WriteLine("Number of primes added to the list " + primes3.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
-            return primes.ToList();
+            return primes3.ToList();
         }
 
     }
