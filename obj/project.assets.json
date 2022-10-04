@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software development\\parallel programming\\PPCumpAssign\\PPCumpAssign\\PPCumpAssign.csproj",
+      "projectUniqueName": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software-development\\parallel programming\\PPCumpAssign\\PPCumpAssign.csproj",
       "projectName": "PPCumpAssign",
-      "projectPath": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software development\\parallel programming\\PPCumpAssign\\PPCumpAssign\\PPCumpAssign.csproj",
+      "projectPath": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software-development\\parallel programming\\PPCumpAssign\\PPCumpAssign.csproj",
       "packagesPath": "C:\\Users\\emil_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software development\\parallel programming\\PPCumpAssign\\PPCumpAssign\\obj\\",
+      "outputPath": "C:\\Users\\emil_\\OneDrive\\Dokumenter\\Skole\\Software-development\\parallel programming\\PPCumpAssign\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\emil_\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

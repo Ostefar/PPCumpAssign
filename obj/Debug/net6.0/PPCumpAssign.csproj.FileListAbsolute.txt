@@ -13,3 +13,18 @@ C:\Users\emil_\OneDrive\Dokumenter\Skole\Software development\parallel programmi
 C:\Users\emil_\OneDrive\Dokumenter\Skole\Software development\parallel programming\PPCumpAssign\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.pdb
 C:\Users\emil_\OneDrive\Dokumenter\Skole\Software development\parallel programming\PPCumpAssign\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.genruntimeconfig.cache
 C:\Users\emil_\OneDrive\Dokumenter\Skole\Software development\parallel programming\PPCumpAssign\PPCumpAssign\obj\Debug\net6.0\ref\PPCumpAssign.dll
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\bin\Debug\net6.0\PPCumpAssign.exe
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\bin\Debug\net6.0\PPCumpAssign.deps.json
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\bin\Debug\net6.0\PPCumpAssign.runtimeconfig.json
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\bin\Debug\net6.0\PPCumpAssign.dll
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\bin\Debug\net6.0\PPCumpAssign.pdb
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.csproj.AssemblyReference.cache
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.AssemblyInfoInputs.cache
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.AssemblyInfo.cs
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.csproj.CoreCompileInputs.cache
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.dll
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\refint\PPCumpAssign.dll
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.pdb
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\PPCumpAssign.genruntimeconfig.cache
+C:\Users\emil_\OneDrive\Dokumenter\Skole\Software-development\parallel programming\PPCumpAssign\obj\Debug\net6.0\ref\PPCumpAssign.dll
