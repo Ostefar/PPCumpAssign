@@ -10,15 +10,14 @@ namespace primeGenerator
 {
     public class PrimeGenerator
     {
-
         public static List<long> GetPrimesSequential(long first, long last)
         {
             var sw = Stopwatch.StartNew();
 
-            List<long> primes = new List<long>();
+            List<long> result = new List<long>();
 
             Console.WriteLine("Sequential");
-            Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
+            //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
             for (long i = first; i <= last; i++)
             {
                 int counter = 0;
@@ -33,7 +32,7 @@ namespace primeGenerator
 
                 if (counter == 0 && i != 1)
                 {
-                    primes.Add(i);
+                    result.Add(i);
                 }
             }
             // remove commentation for printing primes
@@ -43,10 +42,23 @@ namespace primeGenerator
             }*/
             sw.Stop();
             Console.WriteLine("");
-            Console.WriteLine("Number of primes added to the list " + primes.Count);
+            Console.WriteLine("Number of primes added to the list " + result.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
-            return primes;
+            return result;
+        }
+
+        private static bool IsPrime(long number)
+        {
+            if (number < 2) return false;
+            if (number == 2 || number == 3) return true;
+            if (number % 2 == 0 || number % 3 == 0) return false;
+            for (int i = 5; i * i <= number; i += 6)
+            {
+                if (number % i == 0 || number % (i + 2) == 0)
+                    return false;
+            }
+            return true;
         }
 
         public static List<int> GetPrimesSequentialLINQ(int first, int last)
@@ -58,23 +70,20 @@ namespace primeGenerator
             Console.WriteLine("Sequential LINQ");
             //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
 
-            List<int> primes2 = (from n in range
-                         let w = (int)Math.Sqrt(n)
-                         where Enumerable.Range(2, w).All((i) => n % i > 0)
-                         select n).ToList();
+            List<int> result = range.Where(x => IsPrime(x)).Select(x => x).ToList();
 
             // remove commentation for printing primes
-            /*foreach (int prime in primes2)
+            /*foreach (int results in result)
             {
-                Console.Write(prime + " ");
+                Console.Write(primes + " ");
             }*/
 
             sw.Stop();
             Console.WriteLine("");
-            Console.WriteLine("Number of primes added to the list " + primes2.Count);
+            Console.WriteLine("Number of primes added to the list " + result.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
-            return primes2.ToList();
+            return result.ToList();
 
         }
         public static List<int> GetPrimesParallelLINQ(int first, int last) 
@@ -86,25 +95,23 @@ namespace primeGenerator
 
             IEnumerable<int> range = Enumerable.Range(first, last - first);
 
-            List<int> primes3 = (from n in range.AsParallel()
-                          let w = (int)Math.Sqrt(n)
-                          where Enumerable.Range(2, w).All((i) => n % i > 0)
-                          select n).ToList();
-
-            primes3.Sort();
+            List<int> result = range.AsParallel().Where(x => IsPrime(x)).Select(x => x).OrderBy(x => x).ToList()
 
             // remove commentation for printing primes
-            /*foreach (int prime in primes3)
+            // primes3.Sort();
+            /*foreach (int results in result)
              {
-                 Console.Write(prime + " ");
+                 Console.Write(results + " ");
              }*/
 
             sw.Stop();
             Console.WriteLine("");
-            Console.WriteLine("Number of primes added to the list " + primes3.Count);
+            Console.WriteLine("Number of primes added to the list " + result.Count);
             Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
             Console.WriteLine("----------------------------------------------------");
-            return primes3.ToList();
+            return result.ToList();
+
+            //maybe create another version using threading, showing the steps beneath plinq
         }
 
     }
