@@ -28,9 +28,9 @@ namespace primeGenerator
                     if (i % j == 0)
                     {
                         counter++;
-                        break;
-                    }
+                    break;
                 }
+            }
 
                 if (counter == 0 && i != 1)
                 {
