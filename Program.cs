@@ -8,9 +8,6 @@ namespace PPCumpAssign
         // This is done on purpose, to easier see the test results instead of millions of numbers. Remove the commentation, if you want too see the primes
         // Instead I've added a counter, so you can see that the same amount of primes is getting added in the different functions
 
-        // Still to be implemented:
-        // Add results to ListBox - I've never worked with it before, and wanted to add it by the end. But it seems i must rework quite a lot
-        // to implement this feature, that i kinda made myself. So i've decided to go without, and use my "own".
         static void Main(string[] args)
         {
             bool isRunning = true;
