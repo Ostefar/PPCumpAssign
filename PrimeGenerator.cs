@@ -10,6 +10,8 @@ namespace primeGenerator
 {
     public class PrimeGenerator
     {
+        private static readonly ConcurrentQueue<int> primes = new ConcurrentQueue<int>();
+
         public static List<long> GetPrimesSequential(long first, long last)
         {
             var sw = Stopwatch.StartNew();
@@ -17,7 +19,7 @@ namespace primeGenerator
             List<long> result = new List<long>();
 
             Console.WriteLine("Sequential");
-            //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
+
             for (long i = first; i <= last; i++)
             {
                 int counter = 0;
@@ -63,12 +65,11 @@ namespace primeGenerator
 
         public static List<int> GetPrimesSequentialLINQ(int first, int last)
         {
+            Console.WriteLine("Sequential LINQ");
+
             var sw = Stopwatch.StartNew();
 
-            IEnumerable<int> range =Enumerable.Range(first, (last - first));
-
-            Console.WriteLine("Sequential LINQ");
-            //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
+            IEnumerable<int> range = Enumerable.Range(first, (last - first));
 
             List<int> result = range.Where(x => IsPrime(x)).Select(x => x).ToList();
 
@@ -77,7 +78,7 @@ namespace primeGenerator
             {
                 Console.Write(primes + " ");
             }*/
-       
+
             sw.Stop();
             Console.WriteLine("");
             Console.WriteLine("Number of primes added to the list " + result.Count);
@@ -86,12 +87,10 @@ namespace primeGenerator
             return result.ToList();
 
         }
-        public static List<int> GetPrimesParallelLINQ(int first, int last) 
-            {
-            var sw = Stopwatch.StartNew();
-
+        public static List<int> GetPrimesParallelLINQ(int first, int last)
+        {
             Console.WriteLine("Parallel LINQ");
-            //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
+            var sw = Stopwatch.StartNew();
 
             IEnumerable<int> range = Enumerable.Range(first, (last - first));
 
@@ -111,9 +110,78 @@ namespace primeGenerator
             Console.WriteLine("----------------------------------------------------");
             return result.ToList();
 
-            //maybe create another version using threading, showing the steps beneath plinq
-            
         }
 
+   
+        private static void IsPrimeThread(int start, int range)
+        {
+            var isPrime = true;
+            var end = start + range;
+                for (var i = start; i < end; i++)
+                {
+                if (i < 2) isPrime = false;
+                if (i == 2 || i == 3) isPrime = true;
+                if (i % 2 == 0 || i % 3 == 0) isPrime = false;
+                for (int j = 5; j * j <= i; j += 6)
+                    {
+                        if (i % j == 0 || i % (j + 2) == 0)
+                        {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    if (isPrime)
+                    {
+                        primes.Enqueue(i);
+                    }
+                    isPrime = true;
+                }
+        }
+
+
+        public static List<int> GetPrimesParallelThread(int first, int last)
+        {
+            Console.WriteLine("Parallel threading");
+
+            var sw = Stopwatch.StartNew();
+
+            var threadCount = Environment.ProcessorCount;
+            var threads = new Thread[threadCount];
+            var range = (last - first) / threadCount;
+            var start = first;
+
+            for (var i = 0; i < threadCount - 1; i++)
+            {
+                var startl = start;
+                threads[i] = new Thread(() => IsPrimeThread(startl, range));
+                start += range;
+                threads[i].Start();
+            }
+            threads[threadCount - 1] = new Thread(() => IsPrimeThread(start, range + (last - first) % threadCount));
+            threads[threadCount - 1].Start();
+
+            for (var i = 0; i < threadCount; i++)
+                threads[i].Join();
+
+            // Move from primes concurrentqueue to list, to be able to clear primes to avoid double filling
+            List<int> result = primes.ToList();
+
+            primes.Clear();
+
+
+            /*foreach (int prime in primes)
+            {
+                Console.Write(prime + " ");
+            }*/
+
+            sw.Stop();
+            Console.WriteLine("");
+            Console.WriteLine("Number of primes added to the list " + result.Count);
+            Console.WriteLine("Time = {0:f3} sec.", sw.ElapsedMilliseconds / 1000d);
+            Console.WriteLine("----------------------------------------------------");
+           
+            return result.ToList();
+
+        }
     }
 }

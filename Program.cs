@@ -20,7 +20,7 @@ namespace PPCumpAssign
                 var last = Console.ReadLine();
                 Console.WriteLine("----------------------------------------------------");
 
-                RunOrder(Int32.Parse(first), Int32.Parse(last));
+                RunOrder(Int32.Parse(first!), Int32.Parse(last!));
 
             } while (isRunning == true);
         }
@@ -31,6 +31,7 @@ namespace PPCumpAssign
             //PrimeGenerator.GetPrimesSequential(first,last); // be aware, this will take a long time with big intervals (approx 250 seconds for 1-1000000)
             PrimeGenerator.GetPrimesSequentialLINQ(first, last);
             PrimeGenerator.GetPrimesParallelLINQ(first, last);
+            PrimeGenerator.GetPrimesParallelThread(first, last);
         }
 
     }
