@@ -48,7 +48,7 @@ namespace primeGenerator
             return result;
         }
 
-        private static bool IsPrime(long number)
+        private static bool IsPrime(int number)
         {
             if (number < 2) return false;
             if (number == 2 || number == 3) return true;
@@ -65,7 +65,7 @@ namespace primeGenerator
         {
             var sw = Stopwatch.StartNew();
 
-            IEnumerable<int> range = Enumerable.Range(first, last - first);
+            IEnumerable<int> range =Enumerable.Range(first, (last - first));
 
             Console.WriteLine("Sequential LINQ");
             //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
@@ -77,7 +77,7 @@ namespace primeGenerator
             {
                 Console.Write(primes + " ");
             }*/
-
+       
             sw.Stop();
             Console.WriteLine("");
             Console.WriteLine("Number of primes added to the list " + result.Count);
@@ -93,9 +93,9 @@ namespace primeGenerator
             Console.WriteLine("Parallel LINQ");
             //Console.WriteLine($"The Prime Numbers between {first} and {last} are: ");
 
-            IEnumerable<int> range = Enumerable.Range(first, last - first);
+            IEnumerable<int> range = Enumerable.Range(first, (last - first));
 
-            List<int> result = range.AsParallel().Where(x => IsPrime(x)).Select(x => x).OrderBy(x => x).ToList()
+            List<int> result = range.AsParallel().Where(x => IsPrime(x)).Select(x => x).OrderBy(x => x).ToList();
 
             // remove commentation for printing primes
             // primes3.Sort();
@@ -112,6 +112,7 @@ namespace primeGenerator
             return result.ToList();
 
             //maybe create another version using threading, showing the steps beneath plinq
+            
         }
 
     }

@@ -28,7 +28,7 @@ namespace PPCumpAssign
             } while (isRunning == true);
         }
 
-        static void RunOrder(long first, long last)
+        static void RunOrder(int first, int last)
         {
             //If you value your spare time, please do not remove comments from the next line
             //PrimeGenerator.GetPrimesSequential(first,last); // be aware, this will take a long time with big intervals (approx 250 seconds for 1-1000000)
