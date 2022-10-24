@@ -168,11 +168,12 @@ namespace primeGenerator
 
             primes.Clear();
 
-
-            /*foreach (int prime in primes)
+            /*
+            foreach (int results in result)
             {
-                Console.Write(prime + " ");
-            }*/
+                Console.Write(results + " ");
+            }
+            */
 
             sw.Stop();
             Console.WriteLine("");
